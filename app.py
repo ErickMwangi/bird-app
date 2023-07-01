@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, jsonify, make_response
+from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 
@@ -11,8 +12,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://erick_mwangi2:HEChbH3vMsoi
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 
+db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-db.init_app(app)
+#db.init_app(app)
 
 api = Api(app)
 
